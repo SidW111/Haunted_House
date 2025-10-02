@@ -16,13 +16,76 @@ const directionalLight = new THREE.DirectionalLight("#ffffff", 1.5);
 directionalLight.position.set(3, 2, -8);
 scene.add(directionalLight);
 
-//object
+/**
+//texture
+*/
+
+const textureLoader = new THREE.TextureLoader();
+
+//floor texture
+const floorAlphaTexture = textureLoader.load("/floor/alpha.jpg");
+const floorARMTexture = textureLoader.load(
+  "/floor/aerial_rocks_02_1k/aerial_rocks_02_arm_1k.jpg"
+);
+const floorColorTexture = textureLoader.load(
+  "/floor/aerial_rocks_02_1k/aerial_rocks_02_diff_1k.jpg"
+);
+const floorDisplacementTexture = textureLoader.load(
+  "/floor/aerial_rocks_02_1k/aerial_rocks_02_disp_1k.jpg"
+);
+const floorNormalTexture = textureLoader.load(
+  "/floor/aerial_rocks_02_1k/aerial_rocks_02_nor_gl_1k.jpg"
+);
+//House
+
+floorColorTexture.colorSpace = THREE.SRGBColorSpace;
+floorColorTexture.repeat.set(8, 8);
+floorColorTexture.wrapS = THREE.RepeatWrapping;
+floorColorTexture.wrapT = THREE.RepeatWrapping;
+
+floorARMTexture.repeat.set(8, 8);
+floorARMTexture.wrapS = THREE.RepeatWrapping;
+floorARMTexture.wrapT = THREE.RepeatWrapping;
+
+floorDisplacementTexture.repeat.set(8, 8);
+floorDisplacementTexture.wrapT = THREE.RepeatWrapping;
+floorDisplacementTexture.wrapS = THREE.RepeatWrapping;
+
+floorNormalTexture.repeat.set(8, 8);
+floorNormalTexture.wrapS = THREE.RepeatWrapping;
+floorNormalTexture.wrapT = THREE.RepeatWrapping;
 
 //floor
 const floor = new THREE.Mesh(
-  new THREE.PlaneGeometry(20, 20),
-  new THREE.MeshStandardMaterial()
+  new THREE.PlaneGeometry(20, 20, 100, 100),
+  new THREE.MeshStandardMaterial({
+    transparent: true,
+    alphaMap: floorAlphaTexture,
+    map: floorColorTexture,
+    aoMap: floorARMTexture,
+    roughnessMap: floorARMTexture,
+    metalnessMap: floorARMTexture,
+    normalMap: floorNormalTexture,
+    displacementMap: floorDisplacementTexture,
+    displacementScale: 0.4,
+    displacementBias:-0.2,
+  })
 );
+
+gui
+  .add(floor.material, "displacementScale")
+  .min(0)
+  .max(1)
+  .step(0.001)
+  .name("FloorDisplacementScale");
+
+gui
+  .add(floor.material, "displacementBias")
+  .min(-1)
+  .max(1)
+  .step(0.001)
+  .name("FloorDisplacementBias");
+
 floor.rotation.x = -Math.PI * 0.5;
 scene.add(floor);
 
