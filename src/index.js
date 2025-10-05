@@ -156,7 +156,7 @@ doorColorTexture.colorSpace = THREE.SRGBColorSpace;
 
 //floor
 const floor = new THREE.Mesh(
-  new THREE.PlaneGeometry(20, 20, 100, 100),
+  new THREE.PlaneGeometry(20, 20, 30, 30),
   new THREE.MeshStandardMaterial({
     transparent: true,
     alphaMap: floorAlphaTexture,
@@ -224,7 +224,7 @@ house.add(roof);
 
 //door
 const door = new THREE.Mesh(
-  new THREE.PlaneGeometry(2.2, 2.2, 100, 100),
+  new THREE.PlaneGeometry(2.2, 2.2, 30, 30),
   new THREE.MeshStandardMaterial({
     map: doorColorTexture,
     aoMap: doorAOTexture,
@@ -333,9 +333,9 @@ renderer.shadowMap.enabled = true;
 renderer.shadowMap.type = THREE.PCFSoftShadowMap;
 
 directionalLight.castShadow = true;
-ghost1.castShadow = true;
-ghost2.castShadow = true;
-ghost3.castShadow = true;
+// ghost1.castShadow = true;
+// ghost2.castShadow = true;
+// ghost3.castShadow = true;
 
 roof.castShadow = true;
 walls.castShadow = true;
@@ -356,17 +356,17 @@ directionalLight.shadow.camera.left = -8;
 directionalLight.shadow.camera.near = 1;
 directionalLight.shadow.camera.far = 20;
 
-ghost1.shadow.mapSize.width = 256;
-ghost1.shadow.mapSize.height = 256;
-ghost1.shadow.camera.far = 10;
+// ghost1.shadow.mapSize.width = 256;
+// ghost1.shadow.mapSize.height = 256;
+// ghost1.shadow.camera.far = 10;
 
-ghost2.shadow.mapSize.width = 256;
-ghost2.shadow.mapSize.height = 256;
-ghost2.shadow.camera.far = 10;
+// ghost2.shadow.mapSize.width = 256;
+// ghost2.shadow.mapSize.height = 256;
+// ghost2.shadow.camera.far = 10;
 
-ghost3.shadow.mapSize.width = 256;
-ghost3.shadow.mapSize.height = 256;
-ghost3.shadow.camera.far = 10;
+// ghost3.shadow.mapSize.width = 256;
+// ghost3.shadow.mapSize.height = 256;
+// ghost3.shadow.camera.far = 10;
 
 const controls = new OrbitControls(camera, canvas);
 controls.enableDamping = true;
