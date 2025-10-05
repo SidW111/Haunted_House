@@ -7,14 +7,28 @@ const gui = new GUI();
 
 //scene
 const scene = new THREE.Scene();
+const house = new THREE.Group();
 
 //light
-const ambientLight = new THREE.AmbientLight("#ffffff", 0.5);
+const ambientLight = new THREE.AmbientLight("#86cdff", 0.275);
 scene.add(ambientLight);
 
-const directionalLight = new THREE.DirectionalLight("#ffffff", 1.5);
+const directionalLight = new THREE.DirectionalLight("#86cdff", 1.5);
 directionalLight.position.set(3, 2, -8);
 scene.add(directionalLight);
+
+
+//door light
+const doorLight = new THREE.PointLight('#ff7d46',5)
+doorLight.position.set(0,2.2,2.5)
+house.add(doorLight)
+
+//ghosts
+
+const ghost1 = new THREE.PointLight('#8800ff',6);
+const ghost2 = new THREE.PointLight('#ff8800',6);
+const ghost3 = new THREE.PointLight('#ff0000',6);
+scene.add(ghost1,ghost2,ghost3)
 
 /**
 //texture
@@ -175,7 +189,6 @@ floor.rotation.x = -Math.PI * 0.5;
 scene.add(floor);
 
 //house
-const house = new THREE.Group();
 scene.add(house);
 
 //walls
