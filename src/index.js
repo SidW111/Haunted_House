@@ -40,16 +40,16 @@ const textureLoader = new THREE.TextureLoader();
 //floor texture
 const floorAlphaTexture = textureLoader.load("/floor/alpha.jpg");
 const floorARMTexture = textureLoader.load(
-  "/floor/aerial_rocks_02_1k/aerial_rocks_02_arm_1k.jpg"
+  "/floor/aerial_rocks_02_1k/aerial_rocks_02_arm_1k.webp"
 );
 const floorColorTexture = textureLoader.load(
-  "/floor/aerial_rocks_02_1k/aerial_rocks_02_diff_1k.jpg"
+  "/floor/aerial_rocks_02_1k/aerial_rocks_02_diff_1k.webp"
 );
 const floorNormalTexture = textureLoader.load(
-  "/floor/aerial_rocks_02_1k/aerial_rocks_02_nor_gl_1k.jpg"
+  "/floor/aerial_rocks_02_1k/aerial_rocks_02_nor_gl_1k.webp"
 );
 const floorDisplacementTexture = textureLoader.load(
-  "/floor/aerial_rocks_02_1k/aerial_rocks_02_disp_1k.jpg"
+  "/floor/aerial_rocks_02_1k/aerial_rocks_02_disp_1k.webp"
 );
 
 floorColorTexture.colorSpace = THREE.SRGBColorSpace;
@@ -71,26 +71,26 @@ floorNormalTexture.wrapT = THREE.RepeatWrapping;
 
 //wall texture
 const wallARMTexture = textureLoader.load(
-  "/wall/broken_brick_wall_1k/broken_brick_wall_arm_1k.jpg"
+  "/wall/broken_brick_wall_1k/broken_brick_wall_arm_1k.webp"
 );
 const wallColorTexture = textureLoader.load(
-  "/wall/broken_brick_wall_1k/broken_brick_wall_diff_1k.jpg"
+  "/wall/broken_brick_wall_1k/broken_brick_wall_diff_1k.webp"
 );
 const wallNormalTexture = textureLoader.load(
-  "/wall/broken_brick_wall_1k/broken_brick_wall_nor_gl_1k.jpg"
+  "/wall/broken_brick_wall_1k/broken_brick_wall_nor_gl_1k.webp"
 );
 
 wallColorTexture.colorSpace = THREE.SRGBColorSpace;
 
 //roof texture
 const roofARMTexture = textureLoader.load(
-  "/roof/roof_slates_02_1k/roof_slates_02_arm_1k.jpg"
+  "/roof/roof_slates_02_1k/roof_slates_02_arm_1k.webp"
 );
 const roofColorTexture = textureLoader.load(
-  "/roof/roof_slates_02_1k/roof_slates_02_diff_1k.jpg"
+  "/roof/roof_slates_02_1k/roof_slates_02_diff_1k.webp"
 );
 const roofNormalTexture = textureLoader.load(
-  "/roof/roof_slates_02_1k/roof_slates_02_nor_gl_1k.jpg"
+  "/roof/roof_slates_02_1k/roof_slates_02_nor_gl_1k.webp"
 );
 
 roofColorTexture.colorSpace = THREE.SRGBColorSpace;
@@ -106,13 +106,13 @@ roofNormalTexture.wrapS = THREE.RepeatWrapping;
 //bushes texture
 
 const bushesARMTexture = textureLoader.load(
-  "/bushes/leaves_forest_ground_1k/leaves_forest_ground_arm_1k.jpg"
+  "/bushes/leaves_forest_ground_1k/leaves_forest_ground_arm_1k.webp"
 );
 const bushesColorTexture = textureLoader.load(
-  "/bushes/leaves_forest_ground_1k/leaves_forest_ground_diff_1k.jpg"
+  "/bushes/leaves_forest_ground_1k/leaves_forest_ground_diff_1k.webp"
 );
 const bushesNormalTexture = textureLoader.load(
-  "/bushes/leaves_forest_ground_1k/leaves_forest_ground_nor_gl_1k.jpg"
+  "/bushes/leaves_forest_ground_1k/leaves_forest_ground_nor_gl_1k.webp"
 );
 
 bushesColorTexture.colorSpace = THREE.SRGBColorSpace;
@@ -127,13 +127,13 @@ bushesNormalTexture.wrapS = THREE.RepeatWrapping;
 
 //grave texture
 const graveARMTexture = textureLoader.load(
-  "/grave/plastered_stone_wall_1k/plastered_stone_wall_arm_1k.jpg"
+  "/grave/plastered_stone_wall_1k/plastered_stone_wall_arm_1k.webp"
 );
 const graveColorTexture = textureLoader.load(
-  "/grave/plastered_stone_wall_1k/plastered_stone_wall_diff_1k.jpg"
+  "/grave/plastered_stone_wall_1k/plastered_stone_wall_diff_1k.webp"
 );
 const graveNormalTexture = textureLoader.load(
-  "/grave/plastered_stone_wall_1k/plastered_stone_wall_nor_gl_1k.jpg"
+  "/grave/plastered_stone_wall_1k/plastered_stone_wall_nor_gl_1k.webp"
 );
 
 graveColorTexture.colorSpace = THREE.SRGBColorSpace;
@@ -385,7 +385,7 @@ window.addEventListener("resize", () => {
 //SKY
 
 const sky = new Sky();
-sky.scale.set(100,100,100)
+sky.scale.set(100, 100, 100);
 scene.add(sky);
 
 sky.material.uniforms["turbidity"].value = 10;
@@ -393,11 +393,11 @@ sky.material.uniforms["rayleigh"].value = 3;
 sky.material.uniforms["mieCoefficient"].value = 0.1;
 sky.material.uniforms["mieDirectionalG"].value = 0.95;
 sky.material.uniforms["turbidity"].value = 10;
-sky.material.uniforms["sunPosition"].value.set(0.3,-0.038,-0.95)
+sky.material.uniforms["sunPosition"].value.set(0.3, -0.038, -0.95);
 
 //fog
 
-scene.fog = new THREE.FogExp2('#09343f',0.1)
+scene.fog = new THREE.FogExp2("#09343f", 0.1);
 
 const timer = new THREE.Timer();
 const tick = () => {
