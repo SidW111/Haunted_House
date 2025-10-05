@@ -20,6 +20,7 @@ scene.add(directionalLight);
 //texture
 */
 
+//texture loader
 const textureLoader = new THREE.TextureLoader();
 
 //floor texture
@@ -30,13 +31,12 @@ const floorARMTexture = textureLoader.load(
 const floorColorTexture = textureLoader.load(
   "/floor/aerial_rocks_02_1k/aerial_rocks_02_diff_1k.jpg"
 );
-const floorDisplacementTexture = textureLoader.load(
-  "/floor/aerial_rocks_02_1k/aerial_rocks_02_disp_1k.jpg"
-);
 const floorNormalTexture = textureLoader.load(
   "/floor/aerial_rocks_02_1k/aerial_rocks_02_nor_gl_1k.jpg"
 );
-//House
+const floorDisplacementTexture = textureLoader.load(
+  "/floor/aerial_rocks_02_1k/aerial_rocks_02_disp_1k.jpg"
+);
 
 floorColorTexture.colorSpace = THREE.SRGBColorSpace;
 floorColorTexture.repeat.set(8, 8);
@@ -55,6 +55,19 @@ floorNormalTexture.repeat.set(8, 8);
 floorNormalTexture.wrapS = THREE.RepeatWrapping;
 floorNormalTexture.wrapT = THREE.RepeatWrapping;
 
+//wall texture
+const wallARMTexture = textureLoader.load(
+  "/wall/broken_brick_wall_1k/broken_brick_wall_arm_1k.jpg"
+);
+const wallColorTexture = textureLoader.load(
+  "/wall/broken_brick_wall_1k/broken_brick_wall_diff_1k.jpg"
+);
+const wallNormalTexture = textureLoader.load(
+  "/wall/broken_brick_wall_1k/broken_brick_wall_nor_gl_1k.jpg"
+);
+
+wallColorTexture.colorSpace = THREE.SRGBColorSpace
+
 //floor
 const floor = new THREE.Mesh(
   new THREE.PlaneGeometry(20, 20, 100, 100),
@@ -68,7 +81,7 @@ const floor = new THREE.Mesh(
     normalMap: floorNormalTexture,
     displacementMap: floorDisplacementTexture,
     displacementScale: 0.4,
-    displacementBias:-0.2,
+    displacementBias: -0.2,
   })
 );
 
@@ -96,7 +109,14 @@ scene.add(house);
 //walls
 const walls = new THREE.Mesh(
   new THREE.BoxGeometry(4, 2.5, 4),
-  new THREE.MeshStandardMaterial()
+  new THREE.MeshStandardMaterial({
+    transparent:true,
+    aoMap: wallARMTexture,
+    roughnessMap: wallARMTexture,
+    metalnessMap: wallARMTexture,
+    normalMap: wallNormalTexture,
+    map: wallColorTexture,
+  })
 );
 walls.position.y += 1.25;
 house.add(walls);
