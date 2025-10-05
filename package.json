@@ -13,6 +13,9 @@
     "lil-gui": "^0.20.0",
     "three": "^0.180.0"
   },
+  "devDependencies": {
+    "vite": "^7.1.5"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
